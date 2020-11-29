@@ -13,20 +13,20 @@
 # https://github.com/puppetlabs/docs-archive/blob/master/pe/2015.3/release_notes.markdown#filebucket-resource-no-longer-created-by-default
 File { backup => false }
 
-if $::oci_instance['metadata']['disk_info'] { contain profile::os_mounts }
+if $::oci_instance['freeform_tags']['disk_info'] { contain profile::os_mounts }
 #
 # Include the selected role
 #
-if $::oci_instance['metadata']['role'] { 
-  contain $::oci_instance['metadata']['role']
-  Class[::profile::os_mounts] -> Class[$::oci_instance['metadata']['role']]
+if $::oci_instance['freeform_tags']['role'] { 
+  contain $::oci_instance['freeform_tags']['role']
+  Class[::profile::os_mounts] -> Class[$::oci_instance['freeform_tags']['role']]
 }
 #
 # And also include the selected additional profiles
 #
-if $::oci_instance['metadata']['additional_profiles'] { 
-  $::oci_instance['metadata']['additional_profiles'].each |$profile| {
+if $::oci_instance['freeform_tags']['additional_profiles'] { 
+  $::oci_instance['freeform_tags']['additional_profiles'].each |$profile| {
     contain $profile
-    Class[$::oci_instance['metadata']['role']] -> Class[$profile]
+    Class[$::oci_instance['freeform_tags']['role']] -> Class[$profile]
   }
 }
