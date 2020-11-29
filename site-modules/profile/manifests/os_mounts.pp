@@ -1,9 +1,9 @@
-# Create all OS mounts specified in the extended metadata
+# Create all OS mounts specified in the extended freeform_tags
 class profile::os_mounts()
 {
   echo {"Apply ${name}": withpath => false,}
 
-  $disks = $::oci_instance['metadata']['disk_info']
+  $disks = $::oci_instance['freeform_tags']['disk_info']
   $disks.each |$name, $info| {
     $vg_name     = "vg_${name}"
     $lv_name     = "lv_${name}"
