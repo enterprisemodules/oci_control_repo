@@ -14,10 +14,10 @@ hierarchy:
     path: "compartments/%{facts.oci_instance.metadata.compartment}.yaml"
 
   - name: "Node type"
-    path: "node_type/%{facts.oci_instance.metadata.node_type}.yaml"
+    path: "node_type/%{facts.oci_instance.freeform_tags.node_type}.yaml"
 
   - name: "Deployment Zone"
-    path: "deployment_zones/%{facts.oci_instance.metadata.deployment_zone}.yaml"
+    path: "deployment_zones/%{facts.oci_instance.freeform_tags.deployment_zone}.yaml"
 
   - name: "Defaults"
     path: "defaults.yaml"
