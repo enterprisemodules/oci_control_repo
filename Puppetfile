@@ -30,6 +30,7 @@ mod 'puppetlabs-mysql'
 mod 'puppetlabs-apache'
 mod 'camptocamp-systemd'
 mod 'puppet-selinux'
+mod 'WhatsARanjit-node_manager'
 #
 # The Enterprise Modules Oracle specific Modules
 #

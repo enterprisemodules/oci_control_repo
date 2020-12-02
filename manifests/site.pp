@@ -14,6 +14,24 @@
 File { backup => false }
 
 #
+# Puppetserver actions
+#
+if $fqdn == $puppet_server {
+  echo {'Puppetserver specific actions will be executed':
+    withpath => false,
+  }
+  node_group {'OCI':
+    ensure => present,
+    parent => 'All Environments',
+  }
+  -> node_group {'management':
+    ensure  => present,
+    parent  => 'OCI',
+    classes => {'profile::oci_management' => {}},
+  }
+}
+
+#
 # Fetch important OCI information about the instance for furher processing
 #
 $role                = dig($::oci_instance, 'metadata', 'role')
