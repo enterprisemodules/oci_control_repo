@@ -28,7 +28,7 @@ mod 'puppet-zabbix'
 mod 'puppet-check_mk'
 mod 'puppetlabs-mysql' 
 mod 'puppetlabs-apache'
-mod 'camptocamp-systemd'
+mod 'puppet-systemd'
 mod 'puppet-selinux'
 mod 'WhatsARanjit-node_manager'
 #
